@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="xmlcep">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="cep"/>
+                <xs:element ref="logradouro"/>
+                <xs:element ref="complemento"/>
+                <xs:element ref="bairro"/>
+                <xs:element ref="localidade"/>
+                <xs:element ref="uf"/>
+                <xs:element ref="unidade"/>
+                <xs:element ref="ibge"/>
+                <xs:element ref="gia"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cep" type="xs:NMTOKEN"/>
+    <xs:element name="logradouro" type="xs:string"/>
+    <xs:element name="complemento">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="bairro" type="xs:string"/>
+    <xs:element name="localidade" type="xs:string"/>
+    <xs:element name="uf" type="xs:NCName"/>
+    <xs:element name="unidade">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="ibge" type="xs:integer"/>
+    <xs:element name="gia">
+        <xs:complexType/>
+    </xs:element>
+</xs:schema>

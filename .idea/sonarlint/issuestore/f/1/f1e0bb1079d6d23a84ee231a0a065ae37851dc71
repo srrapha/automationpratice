@@ -1,0 +1,6 @@
+
+]
+java:S1128";Remove this unused import 'dto.product.RegisterProductDTO'.(Ç²ûÿÿÿÿ8ªëÙ•».
+M
+java:S1128"+Remove this unused import 'dto.GenericDTO'.(öƒÀúÿÿÿÿ8œ±ø•».
+j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ŠÃ»8É¡û•».
