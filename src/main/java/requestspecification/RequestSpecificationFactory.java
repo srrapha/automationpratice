@@ -45,5 +45,6 @@ public class RequestSpecificationFactory {
         return new ResponseSpecBuilder().log(LogDetail.ALL).build();
     }
 
+
 }
 

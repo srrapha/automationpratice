@@ -2,6 +2,7 @@ package realcontroller;
 
 import dto.SimulationZipJsonDTO;
 import dto.SimulationZipXmlDTO;
+import org.awaitility.Awaitility;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
@@ -14,7 +15,7 @@ public class SimulationCorreios {
 
 
     @Test(groups = "funcional")
-    public void deveRetornar200_getZipJson() {
+    public void mustReturn200_getZipJson() {
 
         String zip = "91350-110";
 
@@ -37,7 +38,7 @@ public class SimulationCorreios {
     }
 
     @Test(groups = "funcional")
-    public void deveRetornar200_getZipXml() {
+    public void mustReturn200_getZipXml() {
 
         String zip = "91350-110";
 
@@ -55,4 +56,6 @@ public class SimulationCorreios {
         assertThat(responseXml.getCep(), equalTo(zip));
 
     }
+
+
 }

@@ -7,15 +7,13 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.requestSpecification;
 import static org.apache.http.HttpStatus.SC_OK;
-import static requestspecification.RequestSpecificationFactory.requestSpecificationJson;
 import static utils.ConstantsUtils.BASE_URL;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class UpdateProductTest {
 
-    private static final ProductDataFactory producto = new ProductDataFactory();
+    private static final ProductDataFactory product = new ProductDataFactory();
 
     @Test(groups = "funcional")
     public void mustReturn201_updateProductById(){
@@ -27,7 +25,7 @@ public class UpdateProductTest {
                 .contentType("application/json")
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .body(producto.buildProduct("top"))
+                .body(product.buildProduct())
                 .pathParam("id",id)
             .when()
                 .put(BASE_URL.concat("/product/{id}"))

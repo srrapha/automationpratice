@@ -27,10 +27,10 @@ public class RegisterProductTest {
             .contentType("application/json")
             .accept(ContentType.JSON)
             .relaxedHTTPSValidation()
-            .body(product.buildProduct("pants1"))
-            .when()
+            .body(product.buildProduct())
+        .when()
             .post(BASE_URL.concat("/product"))
-            .then()
+        .then()
             .statusCode(SC_CREATED);
 
     }
@@ -44,7 +44,7 @@ public class RegisterProductTest {
                         .contentType("application/json")
                         .accept(ContentType.JSON)
                         .relaxedHTTPSValidation()
-                        .body(product.buildProduct("shoes"))
+                        .body(product.buildProduct())
                         .when()
                         .post(BASE_URL.concat("/product"))
                         .then()

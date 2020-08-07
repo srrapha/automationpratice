@@ -13,11 +13,11 @@ import lombok.RequiredArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RegisterProductDTO {
 
-    String id;
-    String createdAt;
-    String name;
-    String avatar;
-    Boolean inStock;
-    String quantity;
+     String id;
+     String createdAt;
+     String name;
+     String avatar;
+     Boolean inStock;
+     String quantity;
 
 }
