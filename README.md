@@ -2,7 +2,6 @@
 Automation Tests in API REST
 
 Necessários:
-#Markdown
 
 Premissas para instalação do projeto:
 1. - Baixar e instalar versão free do Intellij. https://www.jetbrains.com/idea/download/#section=windows
