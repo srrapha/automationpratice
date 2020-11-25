@@ -6,7 +6,10 @@ import io.restassured.config.LogConfig;
 import io.restassured.config.RestAssuredConfig;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+
+import static utils.ConstantsUtils.BASE_PATH_URL_ZIP;
 
 
 public class RequestSpecificationFactory {
@@ -30,14 +33,22 @@ public class RequestSpecificationFactory {
                 .log(LogDetail.ALL);
     }
 
-    public static io.restassured.specification.RequestSpecification requestSpecificationJson() {
-        return getRequestBuilder().build();
+    public static RequestSpecification requestSpecificationJson() {
+        return getRequestBuilder()
+                .setBaseUri(BASE_PATH_URL_ZIP)
+                .build();
+    }
+    public static RequestSpecification requestSpecificationHealthCheck() {
+        return getRequestBuilder()
+                .setBaseUri(BASE_PATH_URL_ZIP)
+                .build();
     }
 
-    public static io.restassured.specification.RequestSpecification requestSpecificationXml() {
+    public static RequestSpecification requestSpecificationXml() {
         return getRequestBuilder()
                 .setContentType(ContentType.XML)
                 .setAccept(ContentType.XML)
+                .setBaseUri(BASE_PATH_URL_ZIP)
                 .build();
     }
 

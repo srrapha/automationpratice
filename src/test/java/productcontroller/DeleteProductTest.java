@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
-import static utils.ConstantsUtils.BASE_URL;
+import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class DeleteProductTest {
@@ -24,7 +24,7 @@ public class DeleteProductTest {
                 .relaxedHTTPSValidation()
                 .pathParam("id",id)
             .when()
-                .delete(BASE_URL.concat("/product/{id}"))
+                .delete(BASE_PATH_URL_MOCK.concat("/product/{id}"))
             .then()
                 .statusCode(SC_OK);
 

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
-import static utils.ConstantsUtils.BASE_URL;
+import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class UpdateProductTest {
@@ -28,7 +28,7 @@ public class UpdateProductTest {
                 .body(product.buildProduct())
                 .pathParam("id",id)
             .when()
-                .put(BASE_URL.concat("/product/{id}"))
+                .put(BASE_PATH_URL_MOCK.concat("/product/{id}"))
             .then()
                 .statusCode(SC_OK);
 

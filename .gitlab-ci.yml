@@ -1,0 +1,49 @@
+.template: &template
+  script:
+    - mvn test -Pspi-auto -DtestSuite=$SUITE -Denv=OU_VEM_A_VARIAVEL_OU_O_AMBIENTE_SETADO
+  image: CAMINHO_IMAGEM_maven:*.*.*-jdk-11-*****
+  tags:
+    - autoscaling_hom
+  artifacts:
+    when: always
+    expire_in: 4 week
+    paths:
+      - CAMINHO_AONDE_É_SALVO
+
+.template_hom: &template_hom
+  <<: *template
+  tags:
+    - autoscaling_hom
+
+stages:
+  - healthCheck-hom
+  - contrato-hom
+  - funcional-hom
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local= aqui_geralmente_m2"
+
+cache:
+  paths:
+    - $CI_PROJECT_DIR/.m2/repository
+
+HealthCheck-Hom:
+  stage: healthCheck-hom
+  <<: *template_hom
+  variables:
+    ENVIRONMENT: "hom"
+    SUITE: "HealthCheckSuite"
+
+Contrato-Hom:
+  stage: contrato-hom
+  <<: *template_hom
+  variables:
+    ENVIRONMENT: "hom"
+    SUITE: "ContratoSuite"
+
+Funcional-Hom:
+  stage: funcional-hom
+  <<: *template_hom
+  variables:
+    ENVIRONMENT: "hom"
+    SUITE: "FuncionalSuite"

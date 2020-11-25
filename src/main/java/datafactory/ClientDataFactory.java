@@ -9,15 +9,15 @@ public class ClientDataFactory {
 
     public RegisterClientDTO buildClient(String firstname, String lastName, String gender) {
         return RegisterClientDTO.builder()
-                .id(Faker.instance().regexify(ID))
-                .createdAt(Faker.instance().regexify(DATE_RDM).concat("/2020"))
-                .firstName(firstname)
-                .lastName(lastName)
-                .gender(gender)
-                .email(Faker.instance().regexify(EMAIL_RDM).concat("@mail.com"))
-                .pass("####")
-                .dateOfBirth(Faker.instance().regexify(DATE_BIRTH_RDM).concat("/1990"))
-                .newsletter(Boolean.TRUE)
+                .id(Faker.instance().regexify(REGEX_CLIENT_ID))
+                .createdAt(Faker.instance().regexify(REGEX_DATE))
+                .firstName(Faker.instance().dragonBall().character())
+                .lastName(Faker.instance().regexify(REGEX_LAST_NAME_CLIENT))
+                .gender(Faker.instance().regexify(REGEX_GENDER_CLIENT))
+                .email(Faker.instance().regexify(REGEX_EMAIL_CLIENT).concat(SUFIXO_EMAIL))
+                .pass(PASSWORD_CLIENT)
+                .dateOfBirth(Faker.instance().regexify(DATE_BIRTH_CLIENT))
+                .newsletter(NEWSLETTER_CLIENT) // Não é uma boa prática setar o valor direto de booleanos
                 .build();
 
     }

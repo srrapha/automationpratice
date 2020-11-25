@@ -19,8 +19,6 @@ a
 1src/test/java/adresscontroller/GetAdressTest.java,0\a\0a972836cf08796a9351edfaa491323c29b0eca2
 f
 6src/test/java/clientcontroller/RegisterClientTest.java,3\6\3624e21380e7762bde5851758c95e6b78880f42f
-R
-"src/test/java/HealthCheckTest.java,c\7\c7b46211aecf36fc94b6dddb45260d7b225a95ac
 c
 3src/test/java/productcontroller/GetProductTest.java,5\8\5858b2d8870380c65b884f93205eab8d7f7de96c
 h

@@ -9,8 +9,8 @@ public class OrderDataFactory {
 
     public CreateOrderDTO buildOrder() {
         return CreateOrderDTO.builder()
-                .id(Faker.instance().regexify(ID))
-                .createdAt(Faker.instance().regexify(DATE_RDM).concat("/2020"))
+                .id(Faker.instance().regexify(REGEX_ORDER_ID))
+                .createdAt(Faker.instance().regexify(REGEX_DATE))
                 .build();
 
     }

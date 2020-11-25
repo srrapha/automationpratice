@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
 import static requestspecification.RequestSpecificationFactory.requestSpecificationJson;
 import static requestspecification.RequestSpecificationFactory.responseSpecification;
-import static utils.ConstantsUtils.BASE_URL;
+import static utils.ConstantsUtils.*;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class GetAdressTest {
@@ -27,7 +27,7 @@ public class GetAdressTest {
              given()
                  .spec(requestSpecificationJson())
             .when()
-                .get("http://5f2700420824d8001655ee0b.mockapi.io/api/v1/adress")
+                .get(BASE_PATH_URL_MOCK.concat("/adress"))
             .then()
                  .spec(responseSpecification())
                 .statusCode(SC_OK)
@@ -44,13 +44,11 @@ public class GetAdressTest {
     @Test(groups = "funcional")
     public void mustReturn200_getAdressById() {
 
-        String id = "1";
-
         RegisterAdressDTO adressDTO = given()
                 .spec(requestSpecificationJson())
-                .pathParam("id", id)
+                .pathParam("id", ADRESS_ID_ONE)
             .when()
-                .get(BASE_URL.concat("/adress/{id}"))
+                .get(BASE_PATH_URL_MOCK.concat("/adress/{id}"))
             .then()
                 .spec(responseSpecification())
                 .statusCode(SC_OK)
@@ -60,23 +58,21 @@ public class GetAdressTest {
 
         System.out.println(adressDTO);
 
-        assertThat(adressDTO.getId(), equalTo(id));
+        assertThat(adressDTO.getId(), equalTo(ADRESS_ID_ONE));
 
     }
 
     @Test(groups = "funcional")
     public void mustReturn404_getAdressByNotFoundId() {
 
-        String id = "100";
-
             given()
                 .log().all()
                 .contentType("application/json")
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .pathParam("id", id)
+                .pathParam("id", ADRESS_ID_NOT_FOUND)
             .when()
-                .get(BASE_URL.concat("/adress/{id}"))
+                .get(BASE_PATH_URL_MOCK.concat("/adress/{id}"))
             .then()
                 .statusCode(SC_NOT_FOUND);
 

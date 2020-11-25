@@ -13,7 +13,7 @@ import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static utils.ConstantsUtils.BASE_URL;
+import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class GetClientTest {
@@ -29,7 +29,7 @@ public class GetClientTest {
                         .accept(ContentType.JSON)
                         .relaxedHTTPSValidation()
                         .when()
-                        .get(BASE_URL.concat("/client"))
+                        .get(BASE_PATH_URL_MOCK.concat("/client"))
                         .then()
                         .statusCode(SC_OK)
                         .assertThat()
@@ -52,7 +52,7 @@ public class GetClientTest {
                 .relaxedHTTPSValidation()
                 .pathParam("id", id)
                 .when()
-                .get(BASE_URL.concat("/client/{id}"))
+                .get(BASE_PATH_URL_MOCK.concat("/client/{id}"))
                 .then()
                 .statusCode(SC_OK)
                 .assertThat()
@@ -77,7 +77,7 @@ public class GetClientTest {
                 .relaxedHTTPSValidation()
                 .pathParam("id", id)
                 .when()
-                .get(BASE_URL.concat("/client/{id}"))
+                .get(BASE_PATH_URL_MOCK.concat("/client/{id}"))
                 .then()
                 .statusCode(SC_NOT_FOUND);
 
@@ -96,7 +96,7 @@ public class GetClientTest {
                 .relaxedHTTPSValidation()
                 .pathParam("id", id)
                 .when()
-                .get(BASE_URL.concat("/client/{id}"))
+                .get(BASE_PATH_URL_MOCK.concat("/client/{id}"))
                 .then()
                 .statusCode(SC_OK)
                 .assertThat()
@@ -110,7 +110,7 @@ public class GetClientTest {
                 .relaxedHTTPSValidation()
                 .pathParam("id", id)
                 .when()
-                .get(BASE_URL.concat("/client/{id}"))
+                .get(BASE_PATH_URL_MOCK.concat("/client/{id}"))
                 .then()
                 .statusCode(SC_OK)
                 .assertThat()

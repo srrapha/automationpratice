@@ -9,21 +9,20 @@ public class AdressDataFactory {
 
     public RegisterAdressDTO buildAdress(String idClient, String name,
                                          String adress, String city,
-                                         String state, String zip,
-                                         String country, String adicional
+                                         String state
     ) {
         return RegisterAdressDTO.builder()
-                .id(Faker.instance().regexify(ID))
-                .createdAt(Faker.instance().regexify(DATE_RDM).concat("/2020"))
+                .id(Faker.instance().regexify(REGEX_ADRESS_ID))
+                .createdAt(Faker.instance().regexify(REGEX_DATE))
                 .idClient(idClient)
-                .name(name)
+                .name(Faker.instance().artist().toString())
                 .company("DBC Company")
                 .adress(adress)
                 .city(city)
                 .state(state)
-                .zip(zip)
-                .country(country)
-                .aditional(adicional)
+                .zip(ADRESS_ZIP)
+                .country("Brasil")
+                .aditional(Faker.instance().regexify(REGEX_ADRESS_ADICIONAL))
                 .build();
 
     }

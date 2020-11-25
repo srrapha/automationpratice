@@ -4,58 +4,69 @@ import dto.SimulationZipJsonDTO;
 import dto.SimulationZipXmlDTO;
 import org.awaitility.Awaitility;
 import org.testng.annotations.Test;
+import utils.ConstantsUtils;
+import utils.GeneralUtils;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static requestspecification.RequestSpecificationFactory.*;
+import static utils.ConstantsUtils.*;
 
 public class SimulationCorreios {
 
-
+    private static final GeneralUtils general = new GeneralUtils();
     @Test(groups = "funcional")
     public void mustReturn200_getZipJson() {
 
-        String zip = "91350-110";
-
         SimulationZipJsonDTO responseJson = given()
                 .spec(requestSpecificationJson())
-                .pathParam("zip", zip)
+                .pathParam("zip", ADRESS_ZIP)
                 .when()
-                .get("https://viacep.com.br/ws/{zip}/json")
+                .get(PATH_URL_ZIP_JSON)
                 .then()
                 .spec(responseSpecification())
                 .statusCode(SC_OK)
                 .assertThat()
-                .body("cep", equalTo(zip))
+                .body("cep", equalTo(ADRESS_ZIP))
                 .extract().response().as(SimulationZipJsonDTO.class);
 
         System.out.println(responseJson);
-        assertThat(responseJson.getCep(), equalTo(zip));
-
+        assertThat(responseJson.getCep(), equalTo(ADRESS_ZIP));
 
     }
 
     @Test(groups = "funcional")
     public void mustReturn200_getZipXml() {
 
-        String zip = "91350-110";
-
         SimulationZipXmlDTO responseXml = given()
                 .spec(requestSpecificationXml())
-                .pathParam("zip", zip)
+                .pathParam("zip", ADRESS_ZIP)
                 .when()
-                .get("https://viacep.com.br/ws/{zip}/xml")
+                .get(PATH_URL_ZIP_XML)
                 .then()
                 .spec(responseSpecification())
                 .statusCode(SC_OK)
                 .extract().response().as(SimulationZipXmlDTO.class);
 
         System.out.println(responseXml);
-        assertThat(responseXml.getCep(), equalTo(zip));
+        assertThat(responseXml.getCep(), equalTo(ADRESS_ZIP));
 
     }
 
+    @Test(groups = "funcional")
+    public void mustReturn200_getAbstractZipJson() {
+
+        assertThat(general.mustReturn200_getZipJson().getCep(), equalTo(ADRESS_ZIP));
+
+    }
+
+    @Test(groups = "funcional")
+    public void mustReturn200_getAbstractZipXml() {
+
+        assertThat(general.mustReturn200_getZipXml().getCep(), equalTo(ADRESS_ZIP));
+
+    }
 
 }

@@ -14,7 +14,7 @@ import static utils.ConstantsUtils.*;
 public class ContractsTest {
 
     @Test(groups = "contract")
-    public void deveRetornar200_clientContract() {
+    public void mustReturn200_clientContract() {
 
             given()
                 .contentType("application/json")
@@ -30,7 +30,7 @@ public class ContractsTest {
     }
 
     @Test(groups = "contract")
-    public void deveRetornar200_productContractFailed() {
+    public void mustReturn200_productContract() {
 
             given()
                 .contentType("application/json")
@@ -46,7 +46,7 @@ public class ContractsTest {
     }
 
     @Test(groups = "contract")
-    public void deveRetornar200_adressContract() {
+    public void mustReturn200_adressContract() {
 
             given()
                 .contentType("application/json")
@@ -62,7 +62,7 @@ public class ContractsTest {
     }
 
     @Test(groups = "contract")
-    public void deveRetornar200_zipContract() {
+    public void mustReturn200_zipJsonContract() {
 
         String zip = "91350110";
 
@@ -72,7 +72,7 @@ public class ContractsTest {
                 .relaxedHTTPSValidation()
                 .pathParam("zip",zip)
             .when()
-                .get(BASE_URL_ZIP.concat("/{zip}/json"))
+                .get(BASE_PATH_URL_ZIP.concat("/{zip}/json"))
             .then()
                 .spec(responseSpecification())
                 .statusCode(HttpStatus.SC_OK)
@@ -81,7 +81,7 @@ public class ContractsTest {
     }
 
     @Test(groups = "contract")
-    public void deveRetornar200_zipXmlContract() {
+    public void mustReturn200_zipXmlContract() {
 
         String zip = "91350110";
 
@@ -91,7 +91,7 @@ public class ContractsTest {
                 .relaxedHTTPSValidation()
                 .pathParam("zip",zip)
             .when()
-                .get(BASE_URL_ZIP.concat("/{zip}/xml"))
+                .get(BASE_PATH_URL_ZIP.concat("/{zip}/xml"))
             .then()
                 .spec(responseSpecification())
                 .statusCode(HttpStatus.SC_OK)

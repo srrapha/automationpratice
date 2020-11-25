@@ -1,33 +1,38 @@
-package clientcontroller;
+package adresscontroller;
 
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
-import datafactory.ClientDataFactory;
+import datafactory.ProductDataFactory;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.apache.http.HttpStatus.SC_CREATED;
+import static org.apache.http.HttpStatus.SC_OK;
 import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
-public class RegisterClientTest {
+public class UpdateAdressTest {
 
-    private static final ClientDataFactory client = new ClientDataFactory();
+    private static final ProductDataFactory product = new ProductDataFactory();
 
     @Test(groups = "funcional")
-    public void mustReturn201_registerClient(){
+    public void mustReturn201_updateProductById(){
 
-        given()
+        String id = "5";
+
+           given()
                 .log().all()
                 .contentType("application/json")
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .body(client.buildClient("Joãozinho", "Silva", "M"))
-                .when()
-                .post(BASE_PATH_URL_MOCK.concat("/client"))
-                .then()
-                .statusCode(SC_CREATED);
+                .body(product.buildProduct())
+                .pathParam("id",id)
+            .when()
+                .put(BASE_PATH_URL_MOCK.concat("/product/{id}"))
+            .then()
+                .statusCode(SC_OK);
 
     }
+
+
 }

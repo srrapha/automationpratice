@@ -1,9 +1,8 @@
-package productcontroller;
+package adresscontroller;
 
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
 import datafactory.ProductDataFactory;
 import dto.GenericDTO;
-
 import io.restassured.http.ContentType;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -14,7 +13,7 @@ import static org.apache.http.HttpStatus.SC_CREATED;
 import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
-public class RegisterProductTest {
+public class RegisterAdressTest {
 
     private static final ProductDataFactory product = new ProductDataFactory();
     private static final GeneralUtils generalUtils = new GeneralUtils();
