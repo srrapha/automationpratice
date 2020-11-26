@@ -3,11 +3,11 @@ package datafactory;
 import com.github.javafaker.Faker;
 import dto.client.RegisterClientDTO;
 
-import static utils.ConstantsUtils.*;
+import static constants.Constants.*;
 
 public class ClientDataFactory {
 
-    public RegisterClientDTO buildClient(String firstname, String lastName, String gender) {
+    public RegisterClientDTO buildClient() {
         return RegisterClientDTO.builder()
                 .id(Faker.instance().regexify(REGEX_CLIENT_ID))
                 .createdAt(Faker.instance().regexify(REGEX_DATE))

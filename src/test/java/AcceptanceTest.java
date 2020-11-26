@@ -1,24 +1,26 @@
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
+import dto.SimulationZipJsonDTO;
+import dto.adress.RegisterAdressDTO;
 import dto.product.RegisterProductDTO;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.GeneralUtils;
 
+import static constants.Constants.ID_FIVE;
+
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class AcceptanceTest {
-
-    private static final GeneralUtils utils = new GeneralUtils();
 
     @Test(groups="acceptance")
     public void mustReturn200_acceptanceEncapsulatedOrderTest(){
 
-        utils.mustReturn200_getAllProducts();
+        GeneralUtils.mustReturn200_getAllProducts();
 
-        RegisterProductDTO registerProduct = utils.mustReturn200_registerGenericProduct();
+        RegisterProductDTO registerProduct = GeneralUtils.mustReturn200_registerGenericProduct();
 
-        RegisterProductDTO getProduct = utils.mustReturn200_getGenericProductById(registerProduct.getId());
+        RegisterProductDTO getProduct = GeneralUtils.mustReturn200_getGenericProductById(registerProduct.getId());
 
-        RegisterProductDTO deleteProduct = utils.mustReturn200_deleteGenericProductById(getProduct.getId());
+        RegisterProductDTO deleteProduct = GeneralUtils.mustReturn200_deleteGenericProductById(getProduct.getId());
 
         System.out.println(deleteProduct);
 
@@ -28,17 +30,11 @@ public class AcceptanceTest {
     @Test(groups="acceptance")
     public void mustReturn200_acceptanceSearchClientZipTest(){
 
-        utils.mustReturn200_getAllProducts();
+        RegisterAdressDTO adress = GeneralUtils.mustReturn200_getGenericAdressById(ID_FIVE);
 
-        RegisterProductDTO registerProduct = utils.mustReturn200_registerGenericProduct();
+        SimulationZipJsonDTO zipJson = GeneralUtils.mustReturn200_getZipJsonWithParameter(adress.getZip());
 
-        RegisterProductDTO getProduct = utils.mustReturn200_getGenericProductById(registerProduct.getId());
-
-
-
-        RegisterProductDTO deleteProduct = utils.mustReturn200_deleteGenericProductById(getProduct.getId());
-
-
+        System.out.println(zipJson);
     }
 
 }

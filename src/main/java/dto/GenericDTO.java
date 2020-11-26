@@ -13,9 +13,9 @@ import lombok.RequiredArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GenericDTO {
 
-    String id;
-    String createdAt;
-    String name;
-    String avatar;
+    private String id;
+    private String createdAt;
+    private String name;
+    private String avatar;
 
 }

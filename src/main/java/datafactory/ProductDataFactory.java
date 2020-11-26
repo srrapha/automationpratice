@@ -2,7 +2,7 @@ package datafactory;
 
 import com.github.javafaker.Faker;
 import dto.product.RegisterProductDTO;
-import static utils.ConstantsUtils.*;
+import static constants.Constants.*;
 
 public class ProductDataFactory {
 
@@ -16,5 +16,6 @@ public class ProductDataFactory {
                 .quantity((Faker.instance().regexify(REGEX_QUANTITY)))
                 .build();
     }
+
 
 }

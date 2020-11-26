@@ -9,7 +9,8 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
-import static utils.ConstantsUtils.BASE_PATH_URL_ZIP;
+import static constants.Constants.BASE_PATH_HEALTH_CHECK;
+import static constants.Constants.BASE_PATH_URL_ZIP;
 
 
 public class RequestSpecificationFactory {
@@ -40,7 +41,7 @@ public class RequestSpecificationFactory {
     }
     public static RequestSpecification requestSpecificationHealthCheck() {
         return getRequestBuilder()
-                .setBaseUri(BASE_PATH_URL_ZIP)
+                .setBaseUri(BASE_PATH_HEALTH_CHECK)
                 .build();
     }
 

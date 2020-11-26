@@ -1,39 +1,39 @@
 package utils;
 
+import datafactory.AdressDataFactory;
 import datafactory.ProductDataFactory;
 import dto.SimulationZipJsonDTO;
 import dto.SimulationZipXmlDTO;
+import dto.adress.RegisterAdressDTO;
 import dto.product.RegisterProductDTO;
 import io.restassured.http.ContentType;
-import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static requestspecification.RequestSpecificationFactory.*;
-import static utils.ConstantsUtils.*;
-import static utils.ConstantsUtils.ADRESS_ZIP;
+import static constants.Constants.*;
+import static constants.Constants.ADRESS_ZIP;
 
 public class GeneralUtils {
 
     private static final ProductDataFactory product = new ProductDataFactory();
+    private static final AdressDataFactory adress = new AdressDataFactory();
 
     public static RegisterProductDTO mustReturn200_getGenericProductById (String id) {
 
            return given()
-                .log().all()
-                .contentType("application/json")
-                .accept(ContentType.JSON)
-                .relaxedHTTPSValidation()
-                .pathParam("id", id)
-            .when()
-                .get(BASE_PATH_URL_MOCK.concat("/product/{id}"))
-            .then()
-                .log().all()
-                .statusCode(SC_OK)
-                .extract().response().as(RegisterProductDTO.class);
+                        .log().all()
+                        .contentType(APLICATION_JSON)
+                        .accept(ContentType.JSON)
+                        .relaxedHTTPSValidation()
+                        .pathParam(ID, id)
+                    .when()
+                        .get(BASE_PATH_URL_MOCK.concat(PATH_PRODUCT_ID))
+                    .then()
+                        .log().all()
+                        .statusCode(SC_OK)
+                        .extract().response().as(RegisterProductDTO.class);
 
     }
 
@@ -41,11 +41,11 @@ public class GeneralUtils {
 
              given()
                 .log().all()
-                .contentType("application/json")
+                .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
             .when()
-                .get(BASE_PATH_URL_MOCK.concat("/product"))
+                .get(BASE_PATH_URL_MOCK.concat(PATH_PRODUCT))
             .then()
                 .log().all()
                 .statusCode(SC_OK);
@@ -57,16 +57,34 @@ public class GeneralUtils {
         return
             given()
                 .log().all()
-                .contentType("application/json")
+                .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
                 .body(product.buildProduct())
             .when()
-                .post(BASE_PATH_URL_MOCK.concat("/product"))
+                .post(BASE_PATH_URL_MOCK.concat(PATH_PRODUCT))
             .then()
                 .log().all()
                 .statusCode(SC_CREATED)
                 .extract().response().as(RegisterProductDTO.class);
+
+    }
+
+    public static RegisterAdressDTO mustReturn200_registerGenericAdress (
+                        String idClient, SimulationZipJsonDTO dataAdress) {
+
+        return     given()
+                        .log().all()
+                        .contentType(APLICATION_JSON)
+                        .accept(ContentType.JSON)
+                        .relaxedHTTPSValidation()
+                        .body(adress.buildAdress(idClient, dataAdress))
+                    .when()
+                        .post(BASE_PATH_URL_MOCK.concat(PATH_ADRESS))
+                    .then()
+                        .log().all()
+                        .statusCode(SC_CREATED)
+                        .extract().response().as(RegisterAdressDTO.class);
 
     }
 
@@ -75,13 +93,13 @@ public class GeneralUtils {
        return
             given()
                 .log().all()
-                .contentType("application/json")
+                .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
                 .body(product.buildProduct())
-                .pathParam("id",id)
+                .pathParam(ID,id)
             .when()
-                .put(BASE_PATH_URL_MOCK.concat("/product/{id}"))
+                .put(BASE_PATH_URL_MOCK.concat(PATH_PRODUCT_ID))
             .then()
                 .log().all()
                 .statusCode(SC_OK)
@@ -94,12 +112,12 @@ public class GeneralUtils {
         return
             given()
                 .log().all()
-                .contentType("application/json")
+                .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .pathParam("id", id)
+                .pathParam(ID, id)
             .when()
-                .delete(BASE_PATH_URL_MOCK.concat("/product/{id}"))
+                .delete(BASE_PATH_URL_MOCK.concat(PATH_PRODUCT_ID))
             .then()
                 .log().all()
                 .statusCode(SC_OK)
@@ -108,18 +126,70 @@ public class GeneralUtils {
 
     }
 
+    public static RegisterAdressDTO mustReturn200_getGenericAdressById (String id) {
+
+        return
+                given()
+                        .log().all()
+                        .contentType(APLICATION_JSON)
+                        .accept(ContentType.JSON)
+                        .relaxedHTTPSValidation()
+                        .pathParam(ID, id)
+                        .when()
+                        .get(BASE_PATH_URL_MOCK.concat(PATH_ADRESS_ID))
+                        .then()
+                        .log().all()
+                        .statusCode(SC_OK)
+                        .extract().response().as(RegisterAdressDTO.class);
+
+
+    }
+
+
+
+    public static RegisterAdressDTO mustReturn200_deleteGenericAdressById (String id) {
+
+        return
+                given()
+                        .log().all()
+                        .contentType(APLICATION_JSON)
+                        .accept(ContentType.JSON)
+                        .relaxedHTTPSValidation()
+                        .pathParam(ID, id)
+                        .when()
+                        .delete(BASE_PATH_URL_MOCK.concat(PATH_ADRESS_ID))
+                        .then()
+                        .log().all()
+                        .statusCode(SC_OK)
+                        .extract().response().as(RegisterAdressDTO.class);
+
+
+    }
+
     public static SimulationZipJsonDTO mustReturn200_getZipJson() {
 
         return given()
                     .spec(requestSpecificationJson())
-                    .pathParam("zip", ADRESS_ZIP)
+                    .pathParam(ZIP, ADRESS_ZIP)
                 .when()
                     .get(PATH_URL_ZIP_JSON)
                 .then()
                     .spec(responseSpecification())
                     .statusCode(SC_OK)
-                    .assertThat()
-                    .body("cep", equalTo(ADRESS_ZIP))
+                    .extract().response().as(SimulationZipJsonDTO.class);
+
+    }
+
+    public static SimulationZipJsonDTO mustReturn200_getZipJsonWithParameter(String zip) {
+
+        return given()
+                    .spec(requestSpecificationJson())
+                    .pathParam(ZIP, zip)
+                .when()
+                    .get(PATH_URL_ZIP_JSON)
+                .then()
+                    .spec(responseSpecification())
+                    .statusCode(SC_OK)
                     .extract().response().as(SimulationZipJsonDTO.class);
 
     }
@@ -128,7 +198,7 @@ public class GeneralUtils {
 
         return given()
                     .spec(requestSpecificationXml())
-                    .pathParam("zip", ADRESS_ZIP)
+                    .pathParam(ZIP, ADRESS_ZIP)
                 .when()
                     .get(PATH_URL_ZIP_XML)
                 .then()

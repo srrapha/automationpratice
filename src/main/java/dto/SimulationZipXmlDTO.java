@@ -15,22 +15,22 @@ public class SimulationZipXmlDTO {
 
 
     @XmlPath("//xmlcep/cep")
-    String cep;
+    private String cep;
     @XmlPath("//xmlcep/logradouro")
-    String logradouro;
+    private String logradouro;
     @XmlPath("//xmlcep/complemento")
-    String complemento;
+    private String complemento;
     @XmlPath("//xmlcep/bairro")
-    String bairro;
+    private String bairro;
     @XmlPath("//xmlcep/localidade")
-    String localidade;
+    private String localidade;
     @XmlPath("//xmlcep/uf")
-    String uf;
+    private String uf;
     @XmlPath("//xmlcep/unidade")
-    String unidade;
+    private String unidade;
     @XmlPath("//xmlcep/ibge")
-    String ibge;
+    private String ibge;
     @XmlPath("//xmlcep/gia")
-    String gia;
+    private String gia;
 
 }

@@ -11,7 +11,7 @@ import utils.GeneralUtils;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_CREATED;
-import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
+import static constants.Constants.BASE_PATH_URL_MOCK;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class RegisterProductTest {
@@ -51,8 +51,7 @@ public class RegisterProductTest {
                         .statusCode(SC_CREATED)
                         .extract().response().as(GenericDTO.class);
 
-        generalUtils.mustReturn200_getGenericProductById(generic.getId());
-
+        GeneralUtils.mustReturn200_getGenericProductById(generic.getId());
 
     }
 }

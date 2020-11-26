@@ -3,7 +3,7 @@ package datafactory;
 import com.github.javafaker.Faker;
 import dto.order.CreateOrderDTO;
 
-import static utils.ConstantsUtils.*;
+import static constants.Constants.*;
 
 public class OrderDataFactory {
 

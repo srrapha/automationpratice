@@ -1,30 +1,32 @@
 package productcontroller;
 
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
+import dto.product.RegisterProductDTO;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.GeneralUtils;
 
+import static constants.Constants.*;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
-import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class DeleteProductTest {
 
     @Test(groups = "funcional")
-    public void mustReturn201_deleteProductById(){
+    public void mustReturn200_deleteProductById(){
 
-        String id = "5";
+        RegisterProductDTO registerProduct = GeneralUtils.mustReturn200_registerGenericProduct();
 
             given()
                 .log().all()
-                .contentType("application/json")
+                .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .pathParam("id",id)
+                .pathParam(ID,registerProduct.getId())
             .when()
-                .delete(BASE_PATH_URL_MOCK.concat("/product/{id}"))
+                .delete(BASE_PATH_URL_MOCK.concat(PATH_PRODUCT_ID))
             .then()
                 .statusCode(SC_OK);
 

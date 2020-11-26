@@ -15,7 +15,7 @@ import static org.hamcrest.Matchers.*;
 import static io.restassured.RestAssured.given;
 import static requestspecification.RequestSpecificationFactory.requestSpecificationJson;
 import static requestspecification.RequestSpecificationFactory.responseSpecification;
-import static utils.ConstantsUtils.*;
+import static constants.Constants.*;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class GetAdressTest {
@@ -27,16 +27,16 @@ public class GetAdressTest {
              given()
                  .spec(requestSpecificationJson())
             .when()
-                .get(BASE_PATH_URL_MOCK.concat("/adress"))
+                .get(BASE_PATH_URL_MOCK.concat(PATH_ADRESS))
             .then()
                  .spec(responseSpecification())
                 .statusCode(SC_OK)
                 .assertThat()
-                .body("company[0]", Matchers.is("DBC Company"))
+                .body("company[0]", Matchers.is(COMPANY))
                 .body("$.size()", is(2))
                 .extract().response();
 
-        assertThat(response.path("company[0]"), is("DBC Company"));
+        assertThat(response.path("company[0]"), is(COMPANY));
         assertThat(response.path("$.size()"), is(2));
 
     }
@@ -44,21 +44,22 @@ public class GetAdressTest {
     @Test(groups = "funcional")
     public void mustReturn200_getAdressById() {
 
-        RegisterAdressDTO adressDTO = given()
+        RegisterAdressDTO adressDTO =
+            given()
                 .spec(requestSpecificationJson())
-                .pathParam("id", ADRESS_ID_ONE)
+                .pathParam(ID, ID_ONE)
             .when()
-                .get(BASE_PATH_URL_MOCK.concat("/adress/{id}"))
+                .get(BASE_PATH_URL_MOCK.concat(PATH_ADRESS_ID))
             .then()
                 .spec(responseSpecification())
                 .statusCode(SC_OK)
                 .assertThat()
-                .body("id", equalTo("1"))
+                .body(ID, equalTo(ID_ONE))
                 .extract().response().as(RegisterAdressDTO.class);
 
         System.out.println(adressDTO);
 
-        assertThat(adressDTO.getId(), equalTo(ADRESS_ID_ONE));
+        assertThat(adressDTO.getId(), equalTo(ID_ONE));
 
     }
 
@@ -67,12 +68,12 @@ public class GetAdressTest {
 
             given()
                 .log().all()
-                .contentType("application/json")
+                .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .pathParam("id", ADRESS_ID_NOT_FOUND)
+                .pathParam(ID, ADRESS_ID_NOT_FOUND)
             .when()
-                .get(BASE_PATH_URL_MOCK.concat("/adress/{id}"))
+                .get(BASE_PATH_URL_MOCK.concat(PATH_ADRESS_ID))
             .then()
                 .statusCode(SC_NOT_FOUND);
 

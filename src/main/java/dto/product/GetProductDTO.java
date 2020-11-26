@@ -13,11 +13,11 @@ import lombok.RequiredArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class GetProductDTO {
 
-    String id;
-    String createdAt;
-    String name;
-    String avatar;
-    Boolean inStock;
-    String quantity;
+    private String id;
+    private String createdAt;
+    private String name;
+    private String avatar;
+    private Boolean inStock;
+    private String quantity;
 
 }

@@ -1,12 +1,13 @@
 package ordercontroller;
 
-import org.testng.annotations.DataProvider;
+import dataprovider.DataProviderFactory;
 import org.testng.annotations.Test;
 
 public class DataProviderTest {
 
-    @Test(dataProvider = "DataProvider")
-    public void dataProvider(String testName) {
+
+    @Test(dataProvider = "DataProvider", dataProviderClass = DataProviderFactory.class)
+    private void dataProvider(String testName) {
         System.out.println(testName);
     }
 
@@ -29,16 +30,10 @@ public class DataProviderTest {
 
     }
 
-    @DataProvider(name = "DataProvider")
-    private Object[] DataProvider() {
-        return new Object[]{
-                "TEST0",
-                "TEST1",
-                "TEST2",
-                "TEST3",
-                "TEST4"
-        };
-
+    @Test(dataProvider = "dataProviderCSVExecution", dataProviderClass = DataProviderFactory.class)
+    public void dataProviderCSVExecution(String testsNames) {
+        System.out.println(testsNames);
     }
+
 
 }

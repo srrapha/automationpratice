@@ -13,7 +13,7 @@ import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
+import static constants.Constants.*;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class GetClientTest {
@@ -23,14 +23,14 @@ public class GetClientTest {
     public void deveRetornar200_getAllClient() {
 
         Response response =
-                given()
+                    given()
                         .log().all()
-                        .contentType("application/json")
+                        .contentType(APLICATION_JSON)
                         .accept(ContentType.JSON)
                         .relaxedHTTPSValidation()
-                        .when()
-                        .get(BASE_PATH_URL_MOCK.concat("/client"))
-                        .then()
+                    .when()
+                        .get(BASE_PATH_URL_MOCK.concat(PATH_CLIENT))
+                    .then()
                         .statusCode(SC_OK)
                         .assertThat()
                         .body("$.size()", is(2))
@@ -43,25 +43,24 @@ public class GetClientTest {
     @Test(groups = "funcional")
     public void deveRetornar200_getClientById() {
 
-        String id = "1";
-
-        RegisterClientDTO clientDTO = given()
-                .log().all()
-                .contentType("application/json")
-                .accept(ContentType.JSON)
-                .relaxedHTTPSValidation()
-                .pathParam("id", id)
+        RegisterClientDTO clientDTO =
+                given()
+                    .log().all()
+                    .contentType(APLICATION_JSON)
+                    .accept(ContentType.JSON)
+                    .relaxedHTTPSValidation()
+                    .pathParam(ID, ID_ONE)
                 .when()
-                .get(BASE_PATH_URL_MOCK.concat("/client/{id}"))
+                    .get(BASE_PATH_URL_MOCK.concat(PATH_CLIENT_ID))
                 .then()
-                .statusCode(SC_OK)
-                .assertThat()
-                .body("id", equalTo("1"))
-                .extract().response().as(RegisterClientDTO.class);
+                    .statusCode(SC_OK)
+                    .assertThat()
+                    .body(ID, equalTo(ID_ONE))
+                    .extract().response().as(RegisterClientDTO.class);
 
         System.out.println(clientDTO);
 
-        assertThat(clientDTO.getId(), equalTo(id));
+        assertThat(clientDTO.getId(), equalTo(ID_ONE));
 
 
     }
@@ -69,16 +68,14 @@ public class GetClientTest {
     @Test(groups = "funcional")
     public void deveRetornar404_getClientByLargeId() {
 
-        String id = "1000000000000";
-
-        given()
-                .contentType("application/json")
+            given()
+                .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .pathParam("id", id)
-                .when()
-                .get(BASE_PATH_URL_MOCK.concat("/client/{id}"))
-                .then()
+                .pathParam(ID, MAX_ID)
+            .when()
+                .get(BASE_PATH_URL_MOCK.concat(PATH_CLIENT_ID))
+            .then()
                 .statusCode(SC_NOT_FOUND);
 
     }
@@ -86,43 +83,40 @@ public class GetClientTest {
     @Test(groups = "funcional")
     public void deveRetornar200_getClientByIdAndCompareObjects() {
 
-
-        String id = "1";
-
-        RegisterClientDTO clientDTO = given()
-                .log().all()
-                .contentType("application/json")
-                .accept(ContentType.JSON)
-                .relaxedHTTPSValidation()
-                .pathParam("id", id)
+        RegisterClientDTO clientDTO =
+                given()
+                    .log().all()
+                    .contentType(APLICATION_JSON)
+                    .accept(ContentType.JSON)
+                    .relaxedHTTPSValidation()
+                    .pathParam(ID, ID_ONE)
                 .when()
-                .get(BASE_PATH_URL_MOCK.concat("/client/{id}"))
+                    .get(BASE_PATH_URL_MOCK.concat(PATH_CLIENT_ID))
                 .then()
-                .statusCode(SC_OK)
-                .assertThat()
-                .body("id", equalTo("1"))
-                .extract().response().as(RegisterClientDTO.class);
+                    .statusCode(SC_OK)
+                    .assertThat()
+                    .body(ID, equalTo(ID_ONE))
+                    .extract().response().as(RegisterClientDTO.class);
 
-        RegisterClientDTO newClientDTO = given()
-                .log().all()
-                .contentType("application/json")
-                .accept(ContentType.JSON)
-                .relaxedHTTPSValidation()
-                .pathParam("id", id)
+        RegisterClientDTO newClientDTO =
+                given()
+                    .log().all()
+                    .contentType(APLICATION_JSON)
+                    .accept(ContentType.JSON)
+                    .relaxedHTTPSValidation()
+                    .pathParam(ID, ID_ONE)
                 .when()
-                .get(BASE_PATH_URL_MOCK.concat("/client/{id}"))
+                    .get(BASE_PATH_URL_MOCK.concat(PATH_CLIENT_ID))
                 .then()
-                .statusCode(SC_OK)
-                .assertThat()
-                .body("id", equalTo("1"))
-                .extract().response().as(RegisterClientDTO.class);
+                    .statusCode(SC_OK)
+                    .assertThat()
+                    .body(ID, equalTo(ID_ONE))
+                    .extract().response().as(RegisterClientDTO.class);
         System.out.println(clientDTO);
         System.out.println(newClientDTO);
 
         assertThat(clientDTO, samePropertyValuesAs(newClientDTO));
 
-
     }
-
 
 }

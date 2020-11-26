@@ -6,9 +6,9 @@ import io.restassured.http.ContentType;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static constants.Constants.*;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_CREATED;
-import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class RegisterClientTest {
@@ -18,15 +18,15 @@ public class RegisterClientTest {
     @Test(groups = "funcional")
     public void mustReturn201_registerClient(){
 
-        given()
+            given()
                 .log().all()
-                .contentType("application/json")
+                .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .body(client.buildClient("Joãozinho", "Silva", "M"))
-                .when()
-                .post(BASE_PATH_URL_MOCK.concat("/client"))
-                .then()
+                .body(client.buildClient())
+            .when()
+                .post(BASE_PATH_URL_MOCK.concat(PATH_CLIENT))
+            .then()
                 .statusCode(SC_CREATED);
 
     }

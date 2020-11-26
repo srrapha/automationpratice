@@ -8,7 +8,8 @@ import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
-import static utils.ConstantsUtils.BASE_PATH_URL_MOCK;
+import static constants.Constants.BASE_PATH_URL_MOCK;
+import static constants.Constants.ID_FIVE;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class UpdateProductTest {
@@ -18,21 +19,18 @@ public class UpdateProductTest {
     @Test(groups = "funcional")
     public void mustReturn201_updateProductById(){
 
-        String id = "5";
-
            given()
                 .log().all()
                 .contentType("application/json")
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
                 .body(product.buildProduct())
-                .pathParam("id",id)
+                .pathParam("id",ID_FIVE)
             .when()
                 .put(BASE_PATH_URL_MOCK.concat("/product/{id}"))
             .then()
                 .statusCode(SC_OK);
 
     }
-
 
 }

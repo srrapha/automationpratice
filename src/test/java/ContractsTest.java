@@ -8,7 +8,7 @@ import static io.restassured.RestAssured.given;
 import static io.restassured.internal.matcher.xml.XmlXsdMatcher.matchesXsdInClasspath;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static requestspecification.RequestSpecificationFactory.responseSpecification;
-import static utils.ConstantsUtils.*;
+import static constants.Constants.*;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class ContractsTest {
@@ -64,15 +64,13 @@ public class ContractsTest {
     @Test(groups = "contract")
     public void mustReturn200_zipJsonContract() {
 
-        String zip = "91350110";
-
         given()
-                .contentType("application/json")
+                .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .pathParam("zip",zip)
+                .pathParam(ZIP,ADRESS_ZIP)
             .when()
-                .get(BASE_PATH_URL_ZIP.concat("/{zip}/json"))
+                .get(BASE_PATH_URL_ZIP.concat(PATH_URL_ZIP_JSON))
             .then()
                 .spec(responseSpecification())
                 .statusCode(HttpStatus.SC_OK)
@@ -83,15 +81,13 @@ public class ContractsTest {
     @Test(groups = "contract")
     public void mustReturn200_zipXmlContract() {
 
-        String zip = "91350110";
-
         given()
-                .contentType("application/xml")
+                .contentType(APLICATION_XML)
                 .accept(ContentType.XML)
                 .relaxedHTTPSValidation()
-                .pathParam("zip",zip)
+                .pathParam(ZIP, ADRESS_ZIP)
             .when()
-                .get(BASE_PATH_URL_ZIP.concat("/{zip}/xml"))
+                .get(BASE_PATH_URL_ZIP.concat(PATH_URL_ZIP_XML))
             .then()
                 .spec(responseSpecification())
                 .statusCode(HttpStatus.SC_OK)
