@@ -13,7 +13,6 @@ import lombok.RequiredArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SimulationZipJsonDTO {
 
-
     private String cep;
     private String logradouro;
     private String complemento;

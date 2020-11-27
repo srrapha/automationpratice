@@ -17,7 +17,6 @@ import static constants.Constants.BASE_PATH_URL_MOCK;
 public class RegisterProductTest {
 
     private static final ProductDataFactory product = new ProductDataFactory();
-    private static final GeneralUtils generalUtils = new GeneralUtils();
 
     @Test(groups = "funcional")
     public void mustReturn201_registerProduct(){
