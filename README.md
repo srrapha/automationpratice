@@ -10,4 +10,4 @@ Premissas para instalação do projeto:
 4. - Baixar e descompactar no disco C da maquina o gerenciador de dependências Maven. http://mirror.nbtelecom.com.br/apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.zip
 Obs: Configurar o Maven nas variáveis de ambiente.
 5. - Ultilizar o plugin Lombok e ativá-lo.
-6. - Lembre-se que a estrutura não é uma regra, mas está seria uma ideal.
+6. - Lembre-se que a estrutura não é uma regra, mas esta seria uma estrutura exemplo ideal.
