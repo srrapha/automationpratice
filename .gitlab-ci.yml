@@ -39,11 +39,11 @@ Contrato-Hom:
   <<: *template_hom
   variables:
     ENVIRONMENT: "hom"
-    SUITE: "ContratoSuite"
+    SUITE: "ContractSuite"
 
 Funcional-Hom:
   stage: funcional-hom
   <<: *template_hom
   variables:
     ENVIRONMENT: "hom"
-    SUITE: "FuncionalSuite"
+    SUITE: "FunctionalSuite"

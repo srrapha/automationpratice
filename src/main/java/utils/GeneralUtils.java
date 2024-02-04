@@ -17,6 +17,7 @@ import static constants.Constants.ADRESS_ZIP;
 
 public class GeneralUtils {
 
+    private GeneralUtils(){}
     private static final ProductDataFactory product = new ProductDataFactory();
     private static final AdressDataFactory adress = new AdressDataFactory();
 

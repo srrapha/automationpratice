@@ -1,14 +1,14 @@
 
-j	java:S100I"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê¿ı8“ßŠ•à.
-p	java:S100–"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù«âÙÿÿÿÿÿ8Ã’Ä–à.
-o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤¡´·ıÿÿÿÿ8“ßŠ•à.
-V
-java:S1118":Add a private constructor to hide the implicit public one.(²–—_8áÁ®‹à.
-j	java:S100n"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë±®8“ßŠ•à.
-p	java:S100©"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’»Ûşÿÿÿÿ8“ßŠ•à.
-p	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºÂƒ¾úÿÿÿÿ8šÈ–à.
-o	java:S100["NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú—œªùÿÿÿÿ8“ßŠ•à.
-k	java:S100Å"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ûë ®8“ßŠ•à.
-o	java:S100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÑÉ™şÿÿÿÿ8“ßŠ•à.
-o	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªñ…úûÿÿÿÿ8“ßŠ•à.
-k	java:S100·"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëµØÉ8“ßŠ•à.
+O
+java:S1118":Add a private constructor to hide the implicit public one.(²–—_
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¤¡´·ıÿÿÿÿ
+h	java:S100("NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÑÉ™şÿÿÿÿ
+h	java:S1007"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ªñ…úûÿÿÿÿ
+c	java:S100I"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ê¿ı
+h	java:S100["NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ú—œªùÿÿÿÿ
+c	java:S100n"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë±®
+i	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ºÂƒ¾úÿÿÿÿ
+i	java:S100–"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ù«âÙÿÿÿÿÿ
+i	java:S100©"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’»Ûşÿÿÿÿ
+d	java:S100·"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ëµØÉ
+d	java:S100Å"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ûë ®

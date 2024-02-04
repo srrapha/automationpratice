@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+    <suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/raphael.ribeiro/IdeaProjects/automationpratice/src/test/java/realcontroller">
+        <classes>
+            <class name="steps.api.realcontroller.SimulationCorreios">
+                <methods>
+                    <include name="mustReturn200_getZipJson"/>
+                    <include name="mustReturn200_getZipXml"/>
+                    <include name="mustReturn200_getAbstractZipJson"/>
+                    <include name="mustReturn200_getAbstractZipXml"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
