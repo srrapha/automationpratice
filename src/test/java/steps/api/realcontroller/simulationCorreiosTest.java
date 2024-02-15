@@ -12,9 +12,9 @@ import static org.hamcrest.Matchers.equalTo;
 import static requestspecification.RequestSpecificationFactory.*;
 import static constants.Constants.*;
 
-public class SimulationCorreios {
+public class simulationCorreiosTest {
 
-    @Test(groups = "funcional")
+    @Test(groups = "functional")
     public void mustReturn200_getZipJson() {
 
         SimulationZipJsonDTO responseJson =
@@ -35,7 +35,7 @@ public class SimulationCorreios {
 
     }
 
-    @Test(groups = "funcional")
+    @Test(groups = "functional")
     public void mustReturn200_getZipXml() {
 
         SimulationZipXmlDTO responseXml =
@@ -54,14 +54,14 @@ public class SimulationCorreios {
 
     }
 
-    @Test(groups = "funcional")
+    @Test(groups = "functional")
     public void mustReturn200_getAbstractZipJson() {
 
         assertThat(GeneralUtils.mustReturn200_getZipJson().getCep(), equalTo(ADRESS_ZIP));
 
     }
 
-    @Test(groups = "funcional")
+    @Test(groups = "functional")
     public void mustReturn200_getAbstractZipXml() {
 
         assertThat(GeneralUtils.mustReturn200_getZipXml().getCep(), equalTo(ADRESS_ZIP));

@@ -1,10 +1,12 @@
 package utils;
 
 import datafactory.AdressDataFactory;
+import datafactory.ClientDataFactory;
 import datafactory.ProductDataFactory;
 import dto.SimulationZipJsonDTO;
 import dto.SimulationZipXmlDTO;
 import dto.adress.RegisterAdressDTO;
+import dto.client.RegisterClientDTO;
 import dto.product.RegisterProductDTO;
 import io.restassured.http.ContentType;
 
@@ -20,6 +22,7 @@ public class GeneralUtils {
     private GeneralUtils(){}
     private static final ProductDataFactory product = new ProductDataFactory();
     private static final AdressDataFactory adress = new AdressDataFactory();
+    private static final ClientDataFactory client = new ClientDataFactory();
 
     public static RegisterProductDTO mustReturn200_getGenericProductById (String id) {
 
@@ -88,6 +91,25 @@ public class GeneralUtils {
                         .extract().response().as(RegisterAdressDTO.class);
 
     }
+
+    public static RegisterClientDTO mustReturn200_registerGenericClient (
+            String idClient, SimulationZipJsonDTO dataClient) {
+
+        return     given()
+                .log().all()
+                .contentType(APLICATION_JSON)
+                .accept(ContentType.JSON)
+                .relaxedHTTPSValidation()
+                .body(client.buildClient())
+                .when()
+                .post(BASE_PATH_URL_MOCK.concat(PATH_CLIENT))
+                .then()
+                .log().all()
+                .statusCode(SC_CREATED)
+                .extract().response().as(RegisterClientDTO.class);
+
+    }
+
 
     public static RegisterProductDTO mustReturn201_updateProductById(String id){
 

@@ -3,7 +3,7 @@
     <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="C:/Users/raphael.ribeiro/IdeaProjects/automationpratice/src/test/java/realcontroller">
         <classes>
-            <class name="steps.api.realcontroller.SimulationCorreios">
+            <class name="steps.api.realcontroller.simulationCorreiosTest">
                 <methods>
                     <include name="mustReturn200_getZipJson"/>
                     <include name="mustReturn200_getZipXml"/>
