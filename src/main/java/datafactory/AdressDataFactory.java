@@ -10,8 +10,7 @@ import static constants.Regex.REGEX_ADRESS_ADICIONAL;
 import static utils.FakerGenerator.*;
 
 public class AdressDataFactory extends GeneralUtils {
-
-
+    
     public RegisterAdressDTO buildAdress(SimulationZipJsonDTO dataAdress
     ) {
         String clientId = getId();

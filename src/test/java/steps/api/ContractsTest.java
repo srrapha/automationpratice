@@ -6,6 +6,7 @@ import org.apache.http.HttpStatus;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static constants.Paths.*;
 import static io.restassured.RestAssured.given;
 import static io.restassured.internal.matcher.xml.XmlXsdMatcher.matchesXsdInClasspath;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -16,7 +17,7 @@ import static constants.Constants.*;
 public class ContractsTest {
 
     @Test(groups = "contract")
-    public void mustReturn200_clientContract() {
+    public void mustReturn200ClientContract() {
 
             given()
                 .contentType("application/json")
@@ -32,7 +33,7 @@ public class ContractsTest {
     }
 
     @Test(groups = "contract")
-    public void mustReturn200_productContract() {
+    public void mustReturn200ProductContract() {
 
             given()
                 .contentType("application/json")
@@ -48,7 +49,7 @@ public class ContractsTest {
     }
 
     @Test(groups = "contract")
-    public void mustReturn200_adressContract() {
+    public void mustReturn200AdressContract() {
 
             given()
                 .contentType("application/json")
@@ -64,7 +65,7 @@ public class ContractsTest {
     }
 
     @Test(groups = "contract")
-    public void mustReturn200_zipJsonContract() {
+    public void mustReturn200ZipJsonContract() {
 
         given()
                 .contentType(APLICATION_JSON)
@@ -81,7 +82,7 @@ public class ContractsTest {
     }
 
     @Test(groups = "contract")
-    public void mustReturn200_zipXmlContract() {
+    public void mustReturn200ZipXmlContract() {
 
         given()
                 .contentType(APLICATION_XML)

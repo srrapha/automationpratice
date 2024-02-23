@@ -6,9 +6,9 @@ import io.restassured.http.ContentType;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static constants.Paths.BASE_PATH_URL_MOCK;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
-import static constants.Constants.BASE_PATH_URL_MOCK;
 import static constants.Constants.ID_FIVE;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
@@ -17,7 +17,7 @@ public class UpdateProductTest {
     private static final ProductDataFactory product = new ProductDataFactory();
 
     @Test(groups = "funcional")
-    public void mustReturn201_updateProductById(){
+    public void mustReturn201UpdateProductById(){
 
            given()
                 .log().all()

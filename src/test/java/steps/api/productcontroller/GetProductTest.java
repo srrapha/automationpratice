@@ -8,6 +8,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static constants.Constants.*;
+import static constants.Paths.*;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_OK;
@@ -18,7 +19,7 @@ import static org.hamcrest.Matchers.*;
 public class GetProductTest {
 
     @Test(groups = "funcional")
-    public void mustReturn200_getAllProducts() {
+    public void mustReturn200GetAllProducts() {
 
         Response response =
                     given()
@@ -39,7 +40,7 @@ public class GetProductTest {
     }
 
     @Test(groups = "funcional")
-    public void mustReturn200_getProductById() {
+    public void mustReturn200GetProductById() {
 
         RegisterProductDTO productDTO = given()
                 .log().all()
@@ -63,7 +64,7 @@ public class GetProductTest {
     }
 
     @Test(groups = "funcional")
-    public void mustReturn404_getProductByInvalidId() {
+    public void mustReturn404GetProductByInvalidId() {
 
             given()
                 .contentType(APLICATION_JSON)
@@ -78,7 +79,7 @@ public class GetProductTest {
     }
 
     @Test(groups = "funcional")
-    public void mustReturn200_getProductByIdAndCompareObjects() {
+    public void mustReturn200GetProductByIdAndCompareObjects() {
 
         RegisterProductDTO productDTO =
             given()

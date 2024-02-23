@@ -9,9 +9,9 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.GeneralUtils;
 
+import static constants.Paths.BASE_PATH_URL_MOCK;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_CREATED;
-import static constants.Constants.BASE_PATH_URL_MOCK;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class RegisterProductTest {
@@ -19,7 +19,7 @@ public class RegisterProductTest {
     private static final ProductDataFactory product = new ProductDataFactory();
 
     @Test(groups = "funcional")
-    public void mustReturn201_registerProduct(){
+    public void mustReturn201RegisterProduct(){
 
         given()
             .log().all()
@@ -35,7 +35,7 @@ public class RegisterProductTest {
     }
 
     @Test(groups = "funcional")
-    public void mustReturn201_registerProductAndConsultId(){
+    public void mustReturn201RegisterProductAndConsultId(){
 
         GenericDTO generic =
                 given()

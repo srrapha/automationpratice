@@ -31,4 +31,6 @@ public class Paths {
     public static final String PATH_ADRESS_ID = "/adress/{id}";
     public static final String PATH_CLIENT = "/client";
     public static final String PATH_CLIENT_ID = "/client/{id}";
+    public static final String PATH_ORDER = "/order";
+
 }

@@ -6,6 +6,8 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static constants.Constants.*;
+import static constants.Paths.PATH_ACTUATOR_HEALTH;
+import static constants.Paths.PATH_STATUS;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.is;
 import static requestspecification.RequestSpecificationFactory.*;
@@ -14,7 +16,7 @@ import static requestspecification.RequestSpecificationFactory.*;
 public class HealthCheckTest {
 
     @Test(groups = "healthCheck")
-    public void mustReturn200_healthCheck() {
+    public void mustReturn200HealthCheck() {
             given().
                 spec(requestSpecificationHealthCheck()).
             when().
