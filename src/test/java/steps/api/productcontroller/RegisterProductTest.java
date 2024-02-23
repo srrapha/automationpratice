@@ -50,7 +50,7 @@ public class RegisterProductTest {
                         .statusCode(SC_CREATED)
                         .extract().response().as(GenericDTO.class);
 
-        GeneralUtils.mustReturn200_getGenericProductById(generic.getId());
+        GeneralUtils.mustReturn200GetGenericProductById(generic.getId());
 
     }
 }

@@ -21,8 +21,8 @@ public class RegisterAdressTest {
     @Test(groups = "funcional")
     public void mustReturn201_registerAdress(){
 
-        SimulationZipJsonDTO adressZipJson = GeneralUtils.mustReturn200_getZipJsonWithParameter(ADRESS_ZIP);
-        RegisterAdressDTO registerAdress = adress.buildAdress(ID_ONE, adressZipJson);
+        SimulationZipJsonDTO adressZipJson = GeneralUtils.mustReturn200GetZipJsonWithParameter(ADRESS_ZIP);
+        RegisterAdressDTO registerAdress = adress.buildAdress(adressZipJson);
 
         given()
             .log().all()

@@ -5,17 +5,16 @@ import datafactory.ClientDataFactory;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.GeneralUtils;
 
 import static constants.Constants.*;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_CREATED;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
-public class RegisterClientTest {
+public class RegisterClientTest extends GeneralUtils {
 
-    private static final ClientDataFactory client = new ClientDataFactory();
-
-    @Test(groups = "funcional")
+    @Test(groups = "functional")
     public void mustReturn201_registerClient(){
 
             given()

@@ -17,7 +17,7 @@ public class DeleteProductTest {
     @Test(groups = "funcional")
     public void mustReturn200_deleteProductById(){
 
-        RegisterProductDTO registerProduct = GeneralUtils.mustReturn200_registerGenericProduct();
+        RegisterProductDTO registerProduct = GeneralUtils.mustReturn200RegisterGenericProduct();
 
             given()
                 .log().all()

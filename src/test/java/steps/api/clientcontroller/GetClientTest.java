@@ -6,6 +6,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+import utils.GeneralUtils;
 
 
 import static io.restassured.RestAssured.*;
@@ -16,7 +17,7 @@ import static org.hamcrest.Matchers.*;
 import static constants.Constants.*;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
-public class GetClientTest {
+public class GetClientTest extends GeneralUtils {
 
 
     @Test(groups = "funcional")

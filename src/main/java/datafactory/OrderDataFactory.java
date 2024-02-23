@@ -1,16 +1,16 @@
 package datafactory;
 
-import com.github.javafaker.Faker;
 import dto.order.CreateOrderDTO;
 
-import static constants.Constants.*;
+import static utils.FakerGenerator.getCurrenceDate;
+import static utils.FakerGenerator.getId;
 
 public class OrderDataFactory {
 
     public CreateOrderDTO buildOrder() {
         return CreateOrderDTO.builder()
-                .id(Faker.instance().regexify(REGEX_ORDER_ID))
-                .createdAt(Faker.instance().regexify(REGEX_DATE))
+                .id(getId())
+                .createdAt(getCurrenceDate())
                 .build();
 
     }

@@ -9,8 +9,8 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
-import static constants.Constants.BASE_PATH_HEALTH_CHECK;
-import static constants.Constants.BASE_PATH_URL_ZIP;
+import static constants.Paths.BASE_PATH_HEALTH_CHECK;
+import static constants.Paths.BASE_PATH_URL_ZIP;
 
 
 public class RequestSpecificationFactory {

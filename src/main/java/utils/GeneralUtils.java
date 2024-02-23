@@ -1,7 +1,9 @@
 package utils;
 
+import com.github.javafaker.Faker;
 import datafactory.AdressDataFactory;
 import datafactory.ClientDataFactory;
+import datafactory.OrderDataFactory;
 import datafactory.ProductDataFactory;
 import dto.SimulationZipJsonDTO;
 import dto.SimulationZipXmlDTO;
@@ -10,6 +12,9 @@ import dto.client.RegisterClientDTO;
 import dto.product.RegisterProductDTO;
 import io.restassured.http.ContentType;
 
+import java.util.Locale;
+
+import static constants.Paths.*;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.apache.http.HttpStatus.SC_OK;
@@ -18,13 +23,15 @@ import static constants.Constants.*;
 import static constants.Constants.ADRESS_ZIP;
 
 public class GeneralUtils {
-
     private GeneralUtils(){}
-    private static final ProductDataFactory product = new ProductDataFactory();
-    private static final AdressDataFactory adress = new AdressDataFactory();
-    private static final ClientDataFactory client = new ClientDataFactory();
 
-    public static RegisterProductDTO mustReturn200_getGenericProductById (String id) {
+    public static final ProductDataFactory product = new ProductDataFactory();
+    public static final AdressDataFactory adress = new AdressDataFactory();
+    public static final ClientDataFactory client = new ClientDataFactory();
+    public static final OrderDataFactory order = new OrderDataFactory();
+    public static final Faker brFk = new Faker(new Locale("pt-BR"));
+
+    public static RegisterProductDTO mustReturn200GetGenericProductById(String id) {
 
            return given()
                         .log().all()
@@ -41,7 +48,7 @@ public class GeneralUtils {
 
     }
 
-    public static void mustReturn200_getAllProducts () {
+    public static void mustReturn200GetAllProducts() {
 
              given()
                 .log().all()
@@ -56,7 +63,7 @@ public class GeneralUtils {
 
     }
 
-    public static RegisterProductDTO mustReturn200_registerGenericProduct () {
+    public static RegisterProductDTO mustReturn200RegisterGenericProduct() {
 
         return
             given()
@@ -74,15 +81,15 @@ public class GeneralUtils {
 
     }
 
-    public static RegisterAdressDTO mustReturn200_registerGenericAdress (
-                        String idClient, SimulationZipJsonDTO dataAdress) {
+    public static RegisterAdressDTO mustReturn200RegisterGenericAdress(
+                        SimulationZipJsonDTO dataAdress) {
 
         return     given()
                         .log().all()
                         .contentType(APLICATION_JSON)
                         .accept(ContentType.JSON)
                         .relaxedHTTPSValidation()
-                        .body(adress.buildAdress(idClient, dataAdress))
+                        .body(adress.buildAdress(dataAdress))
                     .when()
                         .post(BASE_PATH_URL_MOCK.concat(PATH_ADRESS))
                     .then()
@@ -92,8 +99,7 @@ public class GeneralUtils {
 
     }
 
-    public static RegisterClientDTO mustReturn200_registerGenericClient (
-            String idClient, SimulationZipJsonDTO dataClient) {
+    public static RegisterClientDTO mustReturn200RegisterGenericClient( SimulationZipJsonDTO dataClient) {
 
         return     given()
                 .log().all()
@@ -111,7 +117,7 @@ public class GeneralUtils {
     }
 
 
-    public static RegisterProductDTO mustReturn201_updateProductById(String id){
+    public static RegisterProductDTO mustReturn201UpdateProductById(String id){
 
        return
             given()
@@ -130,7 +136,7 @@ public class GeneralUtils {
 
     }
 
-    public static RegisterProductDTO mustReturn200_deleteGenericProductById (String id) {
+    public static RegisterProductDTO mustReturn200DeleteGenericProductById(String id) {
 
         return
             given()
@@ -149,7 +155,7 @@ public class GeneralUtils {
 
     }
 
-    public static RegisterAdressDTO mustReturn200_getGenericAdressById (String id) {
+    public static RegisterAdressDTO mustReturn200GetGenericAdressById(String id) {
 
         return
                 given()
@@ -170,7 +176,7 @@ public class GeneralUtils {
 
 
 
-    public static RegisterAdressDTO mustReturn200_deleteGenericAdressById (String id) {
+    public static RegisterAdressDTO mustReturn200DeleteGenericAdressById(String id) {
 
         return
                 given()
@@ -189,7 +195,7 @@ public class GeneralUtils {
 
     }
 
-    public static SimulationZipJsonDTO mustReturn200_getZipJson() {
+    public static SimulationZipJsonDTO mustReturn200GetZipJson() {
 
         return given()
                     .spec(requestSpecificationJson())
@@ -203,7 +209,7 @@ public class GeneralUtils {
 
     }
 
-    public static SimulationZipJsonDTO mustReturn200_getZipJsonWithParameter(String zip) {
+    public static SimulationZipJsonDTO mustReturn200GetZipJsonWithParameter(String zip) {
 
         return given()
                     .spec(requestSpecificationJson())
@@ -217,7 +223,7 @@ public class GeneralUtils {
 
     }
 
-    public static SimulationZipXmlDTO mustReturn200_getZipXml() {
+    public static SimulationZipXmlDTO mustReturn200GetZipXml() {
 
         return given()
                     .spec(requestSpecificationXml())

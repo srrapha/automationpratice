@@ -16,13 +16,13 @@ public class AcceptanceTest {
     @Test(groups="acceptance")
     public void mustReturn200_acceptanceEncapsulatedOrderTest(){
 
-        GeneralUtils.mustReturn200_getAllProducts();
+        GeneralUtils.mustReturn200GetAllProducts();
 
-        RegisterProductDTO registerProduct = GeneralUtils.mustReturn200_registerGenericProduct();
+        RegisterProductDTO registerProduct = GeneralUtils.mustReturn200RegisterGenericProduct();
 
-        RegisterProductDTO getProduct = GeneralUtils.mustReturn200_getGenericProductById(registerProduct.getId());
+        RegisterProductDTO getProduct = GeneralUtils.mustReturn200GetGenericProductById(registerProduct.getId());
 
-        RegisterProductDTO deleteProduct = GeneralUtils.mustReturn200_deleteGenericProductById(getProduct.getId());
+        RegisterProductDTO deleteProduct = GeneralUtils.mustReturn200DeleteGenericProductById(getProduct.getId());
 
         System.out.println(deleteProduct);
 
@@ -32,9 +32,9 @@ public class AcceptanceTest {
     @Test(groups="acceptance")
     public void mustReturn200_acceptanceSearchClientZipTest(){
 
-        RegisterAdressDTO adress = GeneralUtils.mustReturn200_getGenericAdressById(ID_FIVE);
+        RegisterAdressDTO adress = GeneralUtils.mustReturn200GetGenericAdressById(ID_FIVE);
 
-        SimulationZipJsonDTO zipJson = GeneralUtils.mustReturn200_getZipJsonWithParameter(adress.getZip());
+        SimulationZipJsonDTO zipJson = GeneralUtils.mustReturn200GetZipJsonWithParameter(adress.getZip());
 
         System.out.println(zipJson);
     }

@@ -6,11 +6,14 @@ import dto.adress.RegisterAdressDTO;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import utils.GeneralUtils;
 
 import static constants.Constants.*;
+import static constants.Paths.BASE_PATH_URL_MOCK;
+import static constants.Paths.PATH_ADRESS_ID;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
+import static utils.GeneralUtils.mustReturn200GetZipJsonWithParameter;
+import static utils.GeneralUtils.mustReturn200RegisterGenericAdress;
 
 @Listeners({ExtentITestListenerClassAdapter.class})
 public class DeleteAdressTest {
@@ -18,8 +21,8 @@ public class DeleteAdressTest {
     @Test(groups = "funcional")
     public void mustReturn201_deleteAdressById(){
 
-        SimulationZipJsonDTO zipJson = GeneralUtils.mustReturn200_getZipJsonWithParameter(ADRESS_ZIP);
-        RegisterAdressDTO registerAdress = GeneralUtils.mustReturn200_registerGenericAdress(ID_ONE, zipJson);
+        SimulationZipJsonDTO zipJson = mustReturn200GetZipJsonWithParameter(ADRESS_ZIP);
+        RegisterAdressDTO registerAdress = mustReturn200RegisterGenericAdress(zipJson);
 
             given()
                 .log().all()

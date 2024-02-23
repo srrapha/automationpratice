@@ -15,7 +15,7 @@ public class DataProviderFactory {
     @DataProvider(name = "dataProviderCSVExecution")
     public Iterator<Object[]> dataProviderCSVExecution(){
         try {
-            Scanner scanner = new Scanner(new File(CSV_FILE)).useDelimiter(DELIMETER);
+           final Scanner scanner = new Scanner(new File(CSV_FILE)).useDelimiter(DELIMETER);
             return new Iterator<Object[]>() {
                 @Override
                 public boolean hasNext() {
@@ -33,7 +33,7 @@ public class DataProviderFactory {
     }
 
     @DataProvider(name = "DataProvider")
-    public Object[] DataProvider() {
+    public Object[] dataProvider() {
         return new Object[]{
                 "TEST0",
                 "TEST1",

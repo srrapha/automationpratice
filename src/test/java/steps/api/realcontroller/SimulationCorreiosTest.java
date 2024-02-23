@@ -5,6 +5,7 @@ import dto.SimulationZipXmlDTO;
 import org.testng.annotations.Test;
 import utils.GeneralUtils;
 
+import static constants.Paths.*;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -12,10 +13,10 @@ import static org.hamcrest.Matchers.equalTo;
 import static requestspecification.RequestSpecificationFactory.*;
 import static constants.Constants.*;
 
-public class simulationCorreiosTest {
+public class SimulationCorreiosTest {
 
     @Test(groups = "functional")
-    public void mustReturn200_getZipJson() {
+    public void mustReturn200GetZipJson() {
 
         SimulationZipJsonDTO responseJson =
                 given()
@@ -36,7 +37,7 @@ public class simulationCorreiosTest {
     }
 
     @Test(groups = "functional")
-    public void mustReturn200_getZipXml() {
+    public void mustReturn200GetZipXml() {
 
         SimulationZipXmlDTO responseXml =
                 given()
@@ -55,16 +56,16 @@ public class simulationCorreiosTest {
     }
 
     @Test(groups = "functional")
-    public void mustReturn200_getAbstractZipJson() {
+    public void mustReturn200GetAbstractZipJson() {
 
-        assertThat(GeneralUtils.mustReturn200_getZipJson().getCep(), equalTo(ADRESS_ZIP));
+        assertThat(GeneralUtils.mustReturn200GetZipJson().getCep(), equalTo(ADRESS_ZIP));
 
     }
 
     @Test(groups = "functional")
-    public void mustReturn200_getAbstractZipXml() {
+    public void mustReturn200GetAbstractZipXml() {
 
-        assertThat(GeneralUtils.mustReturn200_getZipXml().getCep(), equalTo(ADRESS_ZIP));
+        assertThat(GeneralUtils.mustReturn200GetZipXml().getCep(), equalTo(ADRESS_ZIP));
 
     }
 
