@@ -1,13 +1,14 @@
 package steps.api.clientcontroller;
 
 import com.aventstack.extentreports.testng.listener.ExtentITestListenerClassAdapter;
-import datafactory.ClientDataFactory;
 import io.restassured.http.ContentType;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.GeneralUtils;
 
 import static constants.Constants.*;
+import static constants.Paths.BASE_PATH_URL_MOCK;
+import static constants.Paths.PATH_CLIENT;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_CREATED;
 
@@ -15,7 +16,7 @@ import static org.apache.http.HttpStatus.SC_CREATED;
 public class RegisterClientTest extends GeneralUtils {
 
     @Test(groups = "functional")
-    public void mustReturn201_registerClient(){
+    public void mustReturn201RegisterClient(){
 
             given()
                 .log().all()

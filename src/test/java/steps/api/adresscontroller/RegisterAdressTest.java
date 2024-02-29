@@ -9,6 +9,8 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import utils.GeneralUtils;
 
+import static constants.Paths.BASE_PATH_URL_MOCK;
+import static constants.Paths.PATH_ADRESS;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static constants.Constants.*;

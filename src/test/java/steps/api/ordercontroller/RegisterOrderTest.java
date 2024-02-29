@@ -7,6 +7,8 @@ import org.testng.annotations.Test;
 import utils.GeneralUtils;
 
 import static constants.Constants.*;
+import static constants.Paths.BASE_PATH_URL_MOCK;
+import static constants.Paths.PATH_ORDER;
 import static io.restassured.RestAssured.given;
 import static org.apache.http.HttpStatus.SC_CREATED;
 
@@ -14,7 +16,7 @@ import static org.apache.http.HttpStatus.SC_CREATED;
 public class RegisterOrderTest extends GeneralUtils {
 
     @Test(groups = "functional")
-    public void mustReturn201_registerOrder(){
+    public void mustReturn201RegisterOrder(){
 
         given()
                 .log().all()
