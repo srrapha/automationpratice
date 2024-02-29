@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import utils.GeneralUtils;
 
 
+import static constants.Paths.*;
 import static io.restassured.RestAssured.*;
 import static org.apache.http.HttpStatus.SC_NOT_FOUND;
 import static org.apache.http.HttpStatus.SC_OK;

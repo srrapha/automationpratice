@@ -8,6 +8,7 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+import static constants.Paths.*;
 import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
