@@ -105,7 +105,7 @@ public class GeneralUtils {
                 .contentType(APLICATION_JSON)
                 .accept(ContentType.JSON)
                 .relaxedHTTPSValidation()
-                .body(client.buildClient())
+                .body(dataClient)
                 .when()
                 .post(BASE_PATH_URL_MOCK.concat(PATH_CLIENT))
                 .then()
